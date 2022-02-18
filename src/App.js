@@ -1,8 +1,20 @@
 import logo from './logo.svg';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import './App.css';
 import React from 'react';
 import LaunchCard from './components/LaunchCard';
+// import ThoughtList from './components/ThoughtList';
 import { linkClasses } from '@mui/material';
+
+//Establish a new link to the GraphQL server at its /graphql endpoint with createHttpLink()
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+//Use ApolloClient() to instantiate the Apollo Client instance and create the connection to the API endpoint
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 const LAUNCHES_QUERY = `
 
@@ -41,6 +53,8 @@ export default function App() {
   }, []);
 
   return (
+    //allows the JSX code between <ApolloProvider> to give access to the server's API data through the ApolloClient
+    <ApolloProvider client={client}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -58,5 +72,6 @@ export default function App() {
         </a>
       </header>
     </div>
+    </ApolloProvider>
   );
 }
