@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import LaunchCard from './LaunchCard';
+import LaunchCard from '../components/LaunchCard';
 import { linkClasses } from '@mui/material';
 import { LAUNCH_QUERY } from '../utils/spacex/queries'
 import { useParams } from 'react-router-dom';
-import Comment from './Comment';
+import Comment from '../components/Comment';
 
 
 export default function LaunchDetail() {
