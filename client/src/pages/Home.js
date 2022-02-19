@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 import { useQuery } from "@apollo/client";
 import { QUERY_THOUGHTS } from "../utils/queries";
 import { LAUNCHES_QUERY } from "../utils/spacex/queries";
+import ThoughtComposer from "../components/ThoughtComposer";
 
 const Home = () => {
   // use useQuery hook to make query request
@@ -42,6 +43,7 @@ const Home = () => {
         </a>
       <div className="flex-row justify-space-between">
         <div className="col-12 mb-3">
+          <ThoughtComposer />
           {loading ? (
             <div>Loading...</div>
           ) : (
