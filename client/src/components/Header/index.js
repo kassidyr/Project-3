@@ -12,6 +12,7 @@ const Header = () => {
         <nav className="text-center">
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
+          <Link to="/donation">Donate to Us</Link>
         </nav>
       </div>
     </header>

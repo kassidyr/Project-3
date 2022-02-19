@@ -14,6 +14,8 @@ import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import LaunchDetail from './pages/LaunchDetail';
+import Donation from './pages/Donation';
+import CheckoutForm from './pages/CheckoutForm';
 
 //Establish a new link to the GraphQL server at its /graphql endpoint with createHttpLink()
 const httpLink = createHttpLink({
@@ -49,6 +51,8 @@ function App() {
             <Route exact path="/profile/:username?" component={Profile} />
             <Route exact path="/thought/:id" component={SingleThought} />
             <Route exact path="/launch/:launchId" component={LaunchDetail} />
+            <Route exact path="/donation" component={Donation} />
+            <Route exact path="/checkout" component={CheckoutForm} />
 
             <Route component={NoMatch} />
             </Switch>
