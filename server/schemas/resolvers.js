@@ -60,6 +60,8 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    
     addThought: async (parent, args, context) => {
       if (context.user) {
         const thought = await Thought.create({

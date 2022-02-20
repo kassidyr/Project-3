@@ -3,7 +3,7 @@ import LaunchCard from '../components/LaunchCard';
 import { linkClasses } from '@mui/material';
 import { LAUNCH_QUERY } from '../utils/spacex/queries'
 import { useParams } from 'react-router-dom';
-import Comment from '../components/Comment';
+import Thought from '../components/Thought';
 
 
 export default function LaunchDetail() {
@@ -58,7 +58,7 @@ export default function LaunchDetail() {
 
       {
         comments.map((comment) => (
-          <Comment key={comment.id} user={comment.user} timestamp={comment.timestamp} text={comment.text} />
+          <Thought key={comment.id} user={comment.user} timestamp={comment.timestamp} text={comment.text} />
         ))
       }
     </>

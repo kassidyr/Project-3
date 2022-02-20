@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 const ThoughtList = ({ thoughts, title }) => {
+  const deleteThought = (thoughtId) => {
+    console.log(thoughtId)
+  }
+
   if (!thoughts.length) {
     return <h3>No Comments Yet</h3>;
   }
@@ -21,6 +26,7 @@ const ThoughtList = ({ thoughts, title }) => {
                 {thought.username}
               </Link>{' '}
               thought on {thought.createdAt}
+              {/* <Button onClick={() => { deleteThought(thought._id) }}>Delete</Button> */}
             </p>
             <div className="card-body">
               <Link to={`/thought/${thought._id}`}>

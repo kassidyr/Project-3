@@ -5,19 +5,29 @@ import LaunchCard from "../components/LaunchCard";
 import { Container } from "react-bootstrap";
 
 import Auth from "../utils/auth";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_THOUGHTS, QUERY_ME_BASIC } from "../utils/queries";
 import { LAUNCHES_QUERY } from "../utils/spacex/queries";
+import ThoughtComposer from "../components/ThoughtComposer";
+import { ADD_THOUGHT } from "../utils/mutations";
 
 const Home = () => {
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_THOUGHTS);
+
+  const [thoughts, setThoughts] = React.useState([]);
   // use object destructuring to extract `data` from the `useQuery` Hook's response and rename it `userData` to be more descriptive (if a user is logged in and has a valid token, userData will hold all of the returned information from our query)
   const { data: userData } = useQuery(QUERY_ME_BASIC);
-  const thoughts = data?.thoughts || [];
+
   //if logged in the loggedIn variable will be true; otherwise it will be false
   const loggedIn = Auth.loggedIn();
   const [launches, setLaunches] = React.useState([]);
+  const [addThought, { error }] = useMutation(ADD_THOUGHT);
+
+  if (!loading && !thoughts.length) {
+    setThoughts(data?.thoughts)
+  }
+
   React.useEffect(() => {
     fetch("https://api.spacex.land/graphql/", {
       method: "POST",
@@ -30,6 +40,19 @@ const Home = () => {
         setLaunches(data.data.launches);
       });
   }, []);
+
+  async function handleAddThought(thoughtText) {
+    try {
+      const { data } = await addThought({
+        variables: { thoughtText: thoughtText }
+      })
+
+      setThoughts([data.addThought, ...thoughts])
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return (
     <main>
       <p>Welcome to Spacebook</p>
@@ -47,12 +70,12 @@ const Home = () => {
             article_link={launch.links.article_link}
             flickr_images={launch.links.flickr_images[0]}
           />
-          // <li key={launch.id}>{launch.mission_name}</li>
         ))}
       </Container>
       <a>Space X Launches</a>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+          <ThoughtComposer postClickedCallback={handleAddThought} />
           {loading ? (
             <div>Loading...</div>
           ) : (
