@@ -1,11 +1,8 @@
-import { useMutation } from '@apollo/client';
 import React, { useState } from 'react'
-import { ADD_THOUGHT } from '../../utils/mutations';
 
-export default function ThoughtComposer() {
+export default function ThoughtComposer({ postClickedCallback }) {
   const [commentText, setCommentText] = useState("");
   const [isPosting, setIsPosting] = useState(false);
-  const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
 
 
@@ -13,13 +10,7 @@ export default function ThoughtComposer() {
     setIsPosting(true)
     setCommentText("posting...")
 
-    try {
-      const { data } = await addThought({
-        variables: { thoughtText: commentText}
-      })
-    } catch (e) {
-      console.log(e)
-    }
+    await postClickedCallback(commentText)
 
     setIsPosting(false);
     setCommentText("");
