@@ -20,6 +20,24 @@ export const QUERY_THOUGHTS = gql`
   }
 `;
 
+export const QUERY_THOUGHTS_FOR_LAUNCH = gql`
+  query thoughtsForLaunch($launchId: String!) {
+    thoughtsForLaunch(launchId: $launchId) {
+      _id
+      thoughtText
+      createdAt
+      username
+      reactionCount
+      reactions {
+        _id
+        createdAt
+        username
+        reactionBody
+      }
+    }
+  }
+`;
+
 export const QUERY_THOUGHT = gql`
   query thought($id: ID!) {
     thought(_id: $id) {

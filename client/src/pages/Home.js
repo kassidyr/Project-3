@@ -24,9 +24,11 @@ const Home = () => {
   const [launches, setLaunches] = React.useState([]);
   const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
-  if (!loading && !thoughts.length) {
-    setThoughts(data?.thoughts)
-  }
+  React.useMemo(() => {
+    if (data && data.thoughts) {
+      setThoughts(data.thoughts)
+    }
+  }, [data])
 
   React.useEffect(() => {
     fetch("https://api.spacex.land/graphql/", {
