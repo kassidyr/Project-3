@@ -1,49 +1,64 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LaunchCard from '../components/LaunchCard';
-import { linkClasses } from '@mui/material';
 import { LAUNCH_QUERY } from '../utils/spacex/queries'
 import { useParams } from 'react-router-dom';
-import Thought from '../components/Thought';
-
+import Auth from "../utils/auth";
+import ThoughtComposer from '../components/ThoughtComposer';
+import ThoughtList from '../components/ThoughtList';
+import { ADD_THOUGHT } from '../utils/mutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_THOUGHTS_FOR_LAUNCH } from '../utils/queries';
 
 export default function LaunchDetail() {
   const { launchId } = useParams();
+  const { loading, data } = useQuery(QUERY_THOUGHTS_FOR_LAUNCH, { variables: { launchId: launchId } });
 
   const [launch, setLaunch] = React.useState()
-  const [comments, setComments] = React.useState([]);
+  const [thoughts, setThoughts] = React.useState([]);
+
+  const [addThought, { error }] = useMutation(ADD_THOUGHT);
+  const loggedIn = Auth.loggedIn();
+
+  console.log("loading", loading)
+  console.log("thoughts", thoughts)
 
   React.useEffect(() => {
-    const fakeComments = [
-      { id: 1, user: "matt", timestamp: "9:05PM", text: "hello" },
-      { id: 2, user: "kass", timestamp: "9:06PM", text: "hi" },
-      { id: 3, user: "toni", timestamp: "9:07PM", text: "bye" },
-      { id: 4, user: "alex", timestamp: "9:08PM", text: "goodbye" },
-    ]
-    setComments(fakeComments)
-
     fetch('https://api.spacex.land/graphql/', {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ query: LAUNCH_QUERY, variables: { id: launchId } })
     })
       .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setLaunch(data.data.launch)
+      .then(result => {
+        console.log(result)
+        setLaunch(result.data.launch)
       })
   }, [])
+
+  React.useMemo(() => {
+    if (data && data.thoughtsForLaunch) {
+      setThoughts(data.thoughtsForLaunch)
+    }
+  }, [data])
+
+  async function handleAddThought(thoughtText) {
+
+    try {
+      const { data } = await addThought({
+        variables: { thoughtText: thoughtText, launchId: launchId }
+      })
+
+      setThoughts([data.addThought, ...thoughts])
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   if (!launch) {
     return (
       <p>loading...</p>
     )
   }
-
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log(data)
-  //   setComments(data.data.whatever)
-  // });
 
   return (
     <>
@@ -56,11 +71,14 @@ export default function LaunchDetail() {
         flickr_images={launch.links.flickr_images[0]}
       />
 
-      {
-        comments.map((comment) => (
-          <Thought key={comment.id} user={comment.user} timestamp={comment.timestamp} text={comment.text} />
-        ))
-      }
+      <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+        <ThoughtComposer postClickedCallback={handleAddThought} />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ThoughtList thoughts={thoughts} title="Comments" />
+        )}
+      </div>
     </>
   );
 }

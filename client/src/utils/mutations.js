@@ -39,13 +39,14 @@ export const ADD_FRIEND = gql`
 `;
 
 export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+  mutation addThought($thoughtText: String!, $launchId: String) {
+    addThought(thoughtText: $thoughtText, launchId: $launchId) {
       _id
       thoughtText
       createdAt
       username
       reactionCount
+      launchId
       reactions {
         _id
         reactionBody

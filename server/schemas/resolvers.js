@@ -29,8 +29,13 @@ const resolvers = {
         .populate("thoughts");
     },
     thoughts: async (parent, { username }) => {
-      const params = username ? { username } : {};
+      let params = username ? { username } : {};
+      params["launchId"] = null
+
       return Thought.find(params).sort({ createdAt: -1 });
+    },
+    thoughtsForLaunch: async (parent, { launchId }) => {
+      return Thought.find({ launchId }).sort({ createdAt: -1 });
     },
     thought: async (parent, { _id }) => {
       return Thought.findOne({ _id });
