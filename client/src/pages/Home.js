@@ -4,8 +4,9 @@ import FriendList from "../components/FriendList";
 import LaunchCard from "../components/LaunchCard";
 import { Container } from "react-bootstrap";
 
+import Auth from "../utils/auth";
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_THOUGHTS, QUERY_ME_BASIC, QUERY_THOUGHTS } from "../utils/queries";
+import { QUERY_THOUGHTS, QUERY_ME_BASIC } from "../utils/queries";
 import { LAUNCHES_QUERY } from "../utils/spacex/queries";
 import ThoughtComposer from "../components/ThoughtComposer";
 import { ADD_THOUGHT } from "../utils/mutations";
