@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <br></br>
-      <div className="container">
-        
+    <footer className="bg-secondary mb-4 py-2 flex-row align-center">
+      <div className="container flex-row justify-space-between-lg justify-center align-center">
+        {/* Change into email form */}
+        Contact Us<br></br>
         &copy;2022 by spacebook
-        
       </div>
-      <br></br>
     </footer>
   );
 };

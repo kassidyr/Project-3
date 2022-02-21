@@ -169,6 +169,8 @@ footer {
   position: sticky;
   bottom: 0;
   background-color: black;
+  line-height: 1.25;
+  font-size: 16px;
 }
 
 nav {
