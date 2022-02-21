@@ -24,6 +24,17 @@ body {
   min-height: 100%;
 }
 
+header {
+  position: sticky;
+  top: 0;
+}
+
+.header-background {
+  background-image: url("./utils/pics/Spaceman\ 2.png");
+  background-position: right center;
+  background-size: cover;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -31,8 +42,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
   font-size: 20px;
-  /* color: var(--dark); */
-  background-color: #f3fffee1;
+  color: white;
+  background-color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -85,6 +96,11 @@ a {
 
 a:visited {
   color: inherit;
+}
+footer {
+  position: sticky;
+  bottom: 0;
+  background-color: black;
 }
 
 nav {
@@ -790,7 +806,7 @@ nav a:hover {
 }
 
 .bg-secondary {
-  background-color: var(--secondary);
+  background-color: black;
 }
 
 .bg-tertiary {
