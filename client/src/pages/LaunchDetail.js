@@ -62,6 +62,7 @@ export default function LaunchDetail() {
 
   return (
     <>
+    <br></br>
       <LaunchCard
         mission_name={launch.mission_name}
         site_name_long={launch.launch_site.site_name_long}

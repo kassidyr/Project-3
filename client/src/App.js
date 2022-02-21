@@ -39,6 +39,10 @@ function App() {
     //allows the JSX code between <ApolloProvider> to give access to the server's API data through the ApolloClient
     <ApolloProvider client={client}>
       <Router>
+      <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'/>
+      <div id='stars'></div>
+      <div id='stars2'></div>
+      <div id='stars3'></div>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
