@@ -85,6 +85,20 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    deleteThought: async (parent, { thoughtId }, context) => {
+      if (context.user) {
+        const deletedThought = await Thought.findOneAndRemove(
+          { _id: thoughtId, username: context.user.username},
+          
+        );
+
+        return deletedThought;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
     addReaction: async (parent, { thoughtId, reactionBody }, context) => {
       if (context.user) {
         const updatedThought = await Thought.findOneAndUpdate(

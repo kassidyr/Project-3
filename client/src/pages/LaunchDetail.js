@@ -77,7 +77,7 @@ export default function LaunchDetail() {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <ThoughtList thoughts={thoughts} title="Comments" />
+          <ThoughtList thoughts={thoughts} title="Comments" setThoughts={setThoughts} />
         )}
       </div>
     </>

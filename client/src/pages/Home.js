@@ -60,7 +60,6 @@ const Home = () => {
       <br></br>
       <Container className="flex-parent">
         {" "}
-        {/* launch card here  */}
         {launches.map((launch) => (
           <LaunchCard
             key={launch.id}
@@ -81,7 +80,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList thoughts={thoughts} title="Comments" />
+            <ThoughtList thoughts={thoughts} title="Comments" setThoughts={setThoughts} />
           )}
         </div>
         {loggedIn && userData ? (
