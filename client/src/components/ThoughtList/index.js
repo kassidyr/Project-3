@@ -1,10 +1,27 @@
+import { useMutation } from "@apollo/client";
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import Auth from "../../utils/auth";
+import { DELETE_THOUGHT } from "../../utils/mutations";
 
-const ThoughtList = ({ thoughts, title }) => {
-  const deleteThought = (thoughtId) => {
-    console.log(thoughtId)
+const ThoughtList = ({ thoughts, title, setThoughts }) => {
+  const [deleteThought, { error }] = useMutation(DELETE_THOUGHT);
+
+
+  async function handleDeleteThought(thoughtId) {
+    try {
+      const { data } = await deleteThought({
+        variables: { thoughtId: thoughtId }
+      })
+
+      if (data?.deleteThought && setThoughts !== undefined) {
+        setThoughts(thoughts.filter(thought => thought._id !== thoughtId))
+      }
+
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   if (!thoughts.length) {
@@ -26,7 +43,7 @@ const ThoughtList = ({ thoughts, title }) => {
                 {thought.username}
               </Link>{' '}
               thought on {thought.createdAt}
-              {/* <Button onClick={() => { deleteThought(thought._id) }}>Delete</Button> */}
+              {Auth.getProfile().data.username === thought.username ? <Button onClick={() => { handleDeleteThought(thought._id) }}>Delete</Button> : <></>}
             </p>
             <div className="card-body">
               <Link to={`/thought/${thought._id}`}>
