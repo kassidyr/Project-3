@@ -33,6 +33,7 @@ const Profile = () => {
   if (!user?.username) {
     return (
       <h4>
+        <br></br>
         You need to be logged in to see this page. Use the navigation links
         above to sign up or log in!
       </h4>

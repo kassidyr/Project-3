@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
     <main>
-      <p>Welcome to Spacebook</p>
+      <br></br>
       <Container className="flex-parent">
         {" "}
         {/* launch card here  */}
