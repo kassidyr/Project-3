@@ -1,5 +1,5 @@
 import React from 'react';
-import LaunchCard from '../components/LaunchCard';
+import BigLaunchCard from '../components/LaunchDetailCard';
 import { LAUNCH_QUERY } from '../utils/spacex/queries'
 import { useParams } from 'react-router-dom';
 import Auth from "../utils/auth";
@@ -8,6 +8,7 @@ import ThoughtList from '../components/ThoughtList';
 import { ADD_THOUGHT } from '../utils/mutations';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS_FOR_LAUNCH } from '../utils/queries';
+import { Container } from "react-bootstrap";
 
 export default function LaunchDetail() {
   const { launchId } = useParams();
@@ -63,16 +64,21 @@ export default function LaunchDetail() {
   return (
     <>
     <br></br>
-      <LaunchCard
+    <Container className="flex-parent">
+      <BigLaunchCard
         mission_name={launch.mission_name}
         site_name_long={launch.launch_site.site_name_long}
         rocket_name={launch.rocket.rocket_name}
         launch_date_utc={launch.launch_date_utc}
         article_link={launch.links.article_link}
         flickr_images={launch.links.flickr_images[0]}
+        video_link={launch.links.video_link}
+        details={launch.details}
       />
+      </Container>
 
       <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+        <br></br>
         <ThoughtComposer postClickedCallback={handleAddThought} />
         {loading ? (
           <div>Loading...</div>

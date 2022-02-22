@@ -54,7 +54,7 @@ const Profile = () => {
     <div>
       <div className="flex-row mb-3">
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : "your"} profile.
+          Viewing {userParam ? `${user.username}'s` : "your"} profile 🚀
         </h2>
         {userParam && (
           <button className="btn ml-auto" onClick={handleClick}>
@@ -67,7 +67,7 @@ const Profile = () => {
         <div className="col-12 mb-3 col-lg-8">
           <ThoughtList
             thoughts={user.thoughts}
-            title={`${user.username}'s comments...`}
+            title={`${user.username}'s comments:`}
           />
         </div>
 

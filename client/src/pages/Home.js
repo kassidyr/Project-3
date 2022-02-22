@@ -22,6 +22,7 @@ const Home = () => {
   //if logged in the loggedIn variable will be true; otherwise it will be false
   const loggedIn = Auth.loggedIn();
   const [launches, setLaunches] = React.useState([]);
+  // const [date, setDate] = React.useState("");
   const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
   React.useMemo(() => {
@@ -39,6 +40,8 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        // const options = { year: "numeric", month: "long", day: "numeric", weekday: "long" }
+        // setDate(new Date(data.data.launch_date_unix).toLocaleDateString(undefined, options));
         setLaunches(data.data.launches);
       });
   }, []);
@@ -54,6 +57,8 @@ const Home = () => {
       console.log(e)
     }
   }
+  
+  // launch.launch_date_utc
 
   return (
     <main>
@@ -67,23 +72,23 @@ const Home = () => {
             mission_name={launch.mission_name}
             site_name_long={launch.launch_site.site_name_long}
             rocket_name={launch.rocket.rocket_name}
-            launch_date_utc={launch.launch_date_utc}
             article_link={launch.links.article_link}
             flickr_images={launch.links.flickr_images[0]}
           />
         ))}
       </Container>
-      <a>Space X Launches</a>
+      <br></br>
+      <h2>General Comments</h2>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
           <ThoughtComposer postClickedCallback={handleAddThought} />
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList thoughts={thoughts} title="Comments" setThoughts={setThoughts} />
+            <ThoughtList thoughts={thoughts} setThoughts={setThoughts} />
           )}
         </div>
-        {loggedIn && userData ? (
+        {/* {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
             <FriendList
               username={userData.me.username}
@@ -91,7 +96,7 @@ const Home = () => {
               friends={userData.me.friends}
             />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </main>
   );
