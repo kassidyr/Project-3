@@ -1,5 +1,7 @@
 import {withRouter} from 'react-router-dom';
-import {CardElement, useElements, useStripe, Elements, ElementsConsumer} from '@stripe/react-stripe-js'
+import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js'
+//import CheckoutForm from './CheckoutForm';
+import { Link } from 'react-router-dom';
 //import {loadStripe} from '@stripe/stripe-js'
 
 const PaymentForm=()=>{
@@ -44,11 +46,11 @@ const PaymentForm=()=>{
             
             <div>
                 <h1>Payment Form</h1>
-            <CardElement /> 
-            <button onClick={()=>handleSubmit(stripe,elements)}>Buy</button> 
+                <CardElement /> 
+                <Link to="/checkout"><button onClick={()=>handleSubmit(stripe,elements)}>Donate♥</button></Link>
             </div>
         //</Elements>
-        
+        //<Link to="/donation">Donate to Us</Link>
     )
 };
 
