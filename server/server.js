@@ -44,8 +44,43 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+//Set up payment intent for stripe
+const stripe = require("stripe")('pk_test_51KTGJSFQWj5xi5NvCTQjnDNEryWbFtgtP46n6mSabCKy0lHfYLaV4OnvmKVf0FI8R5mvE05Y1RAsQE9cKBMnRzhS00NmPXaUW5');
+
+// const calculateOrderAmount = (items) => {
+//   // Replace this constant with a calculation of the order's amount
+//   // Calculate the order total on the server to prevent
+//   // people from directly manipulating the amount on the client
+//   return 1400;
+// };
+
+app.post("/create-payment-intent", async (req, res) => {
+  const { paymentMethodType, currency } = req.body;
+
+  // Create a PaymentIntent with the order amount and currency
+  try{
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: 20, //(items),
+      currency: "usd",
+      payment_method_types:[paymentMethodType],
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+  
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch(e) {
+    res.json(400).json({error: {message: e.message}});
+  }
+  
+});
+
 db.once("open", () => {
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
   });
 });
+
+
