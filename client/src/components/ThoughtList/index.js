@@ -42,7 +42,7 @@ const ThoughtList = ({ thoughts, title, setThoughts }) => {
               >
                 {thought.username}
               </Link>{' '}
-              thought on {thought.createdAt}
+              commented on {thought.createdAt}
               {Auth.loggedIn() && Auth.getProfile().data.username === thought.username ? <Button onClick={() => { handleDeleteThought(thought._id) }}>Delete</Button> : <></>}
             </p>
             <div className="card-body">
