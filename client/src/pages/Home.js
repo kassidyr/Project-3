@@ -23,6 +23,7 @@ const Home = () => {
   //if logged in the loggedIn variable will be true; otherwise it will be false
   const loggedIn = Auth.loggedIn();
   const [launches, setLaunches] = React.useState([]);
+
   const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
   React.useMemo(() => {
@@ -40,6 +41,7 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+
         setLaunches(data.data.launches);
       });
   }, []);
@@ -55,14 +57,13 @@ const Home = () => {
       console.log(e)
     }
   }
+  
 
   return (
     <main>
       <br></br>
       <Container className="flex-parent">
-        
         {" "}
-        {/* launch card here  */}
         {launches.map((launch) => (
           <LaunchCard
             key={launch.id}
@@ -70,31 +71,23 @@ const Home = () => {
             mission_name={launch.mission_name}
             site_name_long={launch.launch_site.site_name_long}
             rocket_name={launch.rocket.rocket_name}
-            launch_date_utc={launch.launch_date_utc}
             article_link={launch.links.article_link}
             flickr_images={launch.links.flickr_images[0]}
           />
         ))}
       </Container>
+      <br></br>
      
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 comment-box-div ${loggedIn && "col-lg-8"}`}>
-          <ThoughtComposer className="comment-box"  postClickedCallback={handleAddThought}  />
+        <h2>General Comments</h2>
+          <ThoughtComposer postClickedCallback={handleAddThought} />
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList thoughts={thoughts} title="Comments" />
+            <ThoughtList thoughts={thoughts} setThoughts={setThoughts} />
           )}
         </div>
-        {loggedIn && userData ? (
-          <div className="col-12 col-lg-3 mb-3">
-            <FriendList
-              username={userData.me.username}
-              friendCount={userData.me.friendCount}
-              friends={userData.me.friends}
-            />
-          </div>
-        ) : null}
       </div>
     </main>
   );

@@ -1,12 +1,13 @@
 import React, { useEffect, useState} from "react";
 // import {getThoughts as getThoughtsApi } from "../api";
 
+
 export default function Thought({ user, timestamp, text, LaunchId}) {
   return (
     <>
-    <div>Thoughts</div>
+    <div className="thoughts">Thoughts</div>
       <p>{user}</p>
-      <p>{timestamp}</p>
+      <p className="thought-time">{timestamp}</p>
       <p>{text}</p>
       <p>{LaunchId}</p>
     </>

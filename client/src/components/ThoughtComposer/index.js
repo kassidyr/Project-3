@@ -23,8 +23,9 @@ export default function ThoughtComposer({ postClickedCallback }) {
 
   return (
     <>
-      <textarea className='comment-box' disabled={isPosting} onChange={commentTextChanged} value={commentText} />
-      <button className='comment-btn' disabled={isPosting} onClick={postComment}>Post</button>
+      <textarea className='comment-box' disabled={isPosting} onChange={commentTextChanged} value={commentText} col-12 mb-3 col-lg-8 />
+      <br></br>
+      <button className="btn d-block comment-btn" disabled={isPosting} onClick={postComment}>Post</button>
     </>
   )
 }

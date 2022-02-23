@@ -1,8 +1,9 @@
 export const LAUNCHES_QUERY = `
 query {
-  launches(limit: 30) {
+  launches(limit: 12) {
     id
     mission_name
+    details
     launch_site {
       site_name_long
       site_name
@@ -14,6 +15,7 @@ query {
     links {
       article_link
       flickr_images
+      video_link
     }
   }
 }
@@ -24,6 +26,7 @@ query getLaunch($id: ID!) {
   launch(id: $id) {
     id
     mission_name
+    details
     launch_site {
       site_name_long
     }
@@ -34,6 +37,7 @@ query getLaunch($id: ID!) {
     links {
       article_link
       flickr_images
+      video_link
     }
   }
 }

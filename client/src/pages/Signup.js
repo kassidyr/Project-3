@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from '../utils/auth';
-import "./Signup.scss"
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -26,7 +25,6 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // use try/catch instead of promises to handle errors
     try {
       const { data } = await addUser({
         variables: { ...formState }
@@ -39,10 +37,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="parent">
-    <main className="flex-row justify-center  mb-4" id="signupbox">
+    <div>
+      <br></br>
+    <main className="flex-row justify-center mb-4">
       <div className="col-12 col-md-6">
-        <div className="card" id="cardbox">
+        <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>

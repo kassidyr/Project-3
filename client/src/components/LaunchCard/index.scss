@@ -58,12 +58,13 @@ body{
     }
 
     .card{
+        display: flex;
         flex-direction: column;
         text-align: center;
         font-size:small;
         overflow: hidden;
         min-width: 10rem;
-        max-height: 20rem;
+        max-height: auto;
 
         &__img{
             width: 100%;
