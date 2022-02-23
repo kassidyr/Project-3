@@ -54,7 +54,7 @@ This app is governed by MIT license.
 
 ## Contributing 
 
-If you are interested in contacting me for this project or future work , feel free to reach me via e-mail at alystrife@gmail.com.
+If you are interested in contributing please contact any of the individuals listed below via the links provided.
 
 
 ## Credits 
