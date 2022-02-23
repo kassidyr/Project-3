@@ -1,0 +1,40 @@
+
+#loginbox{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    // border: white solid 2px;
+    border-radius: 50px;
+    // background-color: rgb(20, 23, 33);
+    width: 40vw;
+    height: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h4{
+    display: flex;
+    justify-content: center;
+}
+
+.form-input{
+border-radius: 3px;
+
+}
+
+.parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#cardbox{
+    background-color: rgb(20, 23, 33);
+}
+
+button{
+    cursor: pointer;
+}

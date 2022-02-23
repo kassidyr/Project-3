@@ -10,7 +10,7 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center header-background">
+    <header className="head"  class="header-background">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
           <h1>spacebook</h1>

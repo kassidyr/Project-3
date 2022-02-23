@@ -8,6 +8,7 @@ import ThoughtList from '../components/ThoughtList';
 import { ADD_THOUGHT } from '../utils/mutations';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS_FOR_LAUNCH } from '../utils/queries';
+import "./LaunchDetail.scss"
 
 export default function LaunchDetail() {
   const { launchId } = useParams();
@@ -63,7 +64,8 @@ export default function LaunchDetail() {
   return (
     <>
     <br></br>
-      <LaunchCard
+    <div className='detailbox'>
+      <LaunchCard className="lcard"
         mission_name={launch.mission_name}
         site_name_long={launch.launch_site.site_name_long}
         rocket_name={launch.rocket.rocket_name}
@@ -72,13 +74,14 @@ export default function LaunchDetail() {
         flickr_images={launch.links.flickr_images[0]}
       />
 
-      <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
-        <ThoughtComposer postClickedCallback={handleAddThought} />
+      <div className={`comment-box-detail ${loggedIn && "col-lg-8"}`}>
+        <ThoughtComposer className="comment-box" postClickedCallback={handleAddThought} />
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <ThoughtList thoughts={thoughts} title="Comments" setThoughts={setThoughts} />
+          <ThoughtList thoughts={thoughts} title="Comments" />
         )}
+      </div>
       </div>
     </>
   );

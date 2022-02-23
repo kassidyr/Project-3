@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
+import "./app.scss"
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -40,12 +41,14 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
       <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'/>
-      <div id='stars'></div>
-      <div id='stars2'></div>
-      <div id='stars3'></div>
+      <div className='star' id='stars'></div>
+      <div className='star' id='stars2'></div>
+      <div className='star' id='stars3'></div>
+      
+      
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          <div className="container">
+          <div className="container" id="con">
             <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />

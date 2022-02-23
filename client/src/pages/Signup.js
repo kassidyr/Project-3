@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from '../utils/auth';
+import "./Signup.scss"
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -38,11 +39,10 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <br></br>
-    <main className="flex-row justify-center mb-4">
+    <div className="parent">
+    <main className="flex-row justify-center  mb-4" id="signupbox">
       <div className="col-12 col-md-6">
-        <div className="card">
+        <div className="card" id="cardbox">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>

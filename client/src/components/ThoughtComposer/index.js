@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./index.scss"
 
 export default function ThoughtComposer({ postClickedCallback }) {
   const [commentText, setCommentText] = useState("");
@@ -22,8 +23,8 @@ export default function ThoughtComposer({ postClickedCallback }) {
 
   return (
     <>
-      <textarea disabled={isPosting} onChange={commentTextChanged} value={commentText} />
-      <button  disabled={isPosting} onClick={postComment}>Post</button>
+      <textarea className='comment-box' disabled={isPosting} onChange={commentTextChanged} value={commentText} />
+      <button className='comment-btn' disabled={isPosting} onClick={postComment}>Post</button>
     </>
   )
 }

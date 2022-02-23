@@ -3,6 +3,7 @@ import ThoughtList from "../components/ThoughtList";
 import FriendList from "../components/FriendList";
 import LaunchCard from "../components/LaunchCard";
 import { Container } from "react-bootstrap";
+import "./Home.scss"
 
 import Auth from "../utils/auth";
 import { useMutation, useQuery } from "@apollo/client";
@@ -59,7 +60,9 @@ const Home = () => {
     <main>
       <br></br>
       <Container className="flex-parent">
+        
         {" "}
+        {/* launch card here  */}
         {launches.map((launch) => (
           <LaunchCard
             key={launch.id}
@@ -73,14 +76,14 @@ const Home = () => {
           />
         ))}
       </Container>
-      <a>Space X Launches</a>
+     
       <div className="flex-row justify-space-between">
-        <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
-          <ThoughtComposer postClickedCallback={handleAddThought} />
+        <div className={`col-12 mb-3 comment-box-div ${loggedIn && "col-lg-8"}`}>
+          <ThoughtComposer className="comment-box"  postClickedCallback={handleAddThought}  />
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList thoughts={thoughts} title="Comments" setThoughts={setThoughts} />
+            <ThoughtList thoughts={thoughts} title="Comments" />
           )}
         </div>
         {loggedIn && userData ? (
