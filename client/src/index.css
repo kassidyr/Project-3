@@ -185,7 +185,7 @@ footer {
   line-height: 1.25;
   font-size: 16px;
   z-index: 23;
-  padding:25px;
+  padding:20px;
 }
 
 .footer-background {
@@ -269,6 +269,12 @@ nav a:hover {
 }
 
 .flex-parent{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-parent-detail{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

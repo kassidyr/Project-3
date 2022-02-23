@@ -64,7 +64,7 @@ export default function LaunchDetail() {
   return (
     <>
     <br></br>
-    <Container className="flex-parent">
+    <Container className="flex-parent-detail">
       <BigLaunchCard
         mission_name={launch.mission_name}
         site_name_long={launch.launch_site.site_name_long}

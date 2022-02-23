@@ -11,7 +11,7 @@ function LaunchCard({ id, mission_name, site_name_long, rocket_name, launch_date
         <Card.Title>{mission_name}</Card.Title>
         <Card.Text>{site_name_long}</Card.Text>
         <Card.Text>{rocket_name}</Card.Text>
-        <Card.Text>{launch_date_utc}</Card.Text>
+        {/* <Card.Text>{launch_date_utc}</Card.Text> */}
         {id === undefined ? <></> : <Card.Link href={`/launch/${id}`}>See More</Card.Link>}
         <Row>
           <Col>
