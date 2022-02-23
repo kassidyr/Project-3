@@ -1,6 +1,6 @@
 export const LAUNCHES_QUERY = `
 query {
-  launches(limit: 12) {
+  launches(limit: 15) {
     id
     mission_name
     details
