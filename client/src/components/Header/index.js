@@ -14,6 +14,7 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
           <h1>spacebook</h1>
+          <h7>the Social Networking App for Astronomy Enthusiasts</h7>
         </Link>
 
         <nav className="text-center">
