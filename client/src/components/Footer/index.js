@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex-row align-center footer-background">
+    <footer className=" footer-background">
       <div className="container flex-row justify-space-around-lg justify-center align-center">
         {/* Change into email form */}
         <h6>Contact Us</h6>

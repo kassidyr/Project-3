@@ -187,6 +187,9 @@ footer {
   font-size: 16px;
   z-index: 23;
   padding:25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .footer-background {
@@ -253,8 +256,8 @@ nav a:hover {
 /* CARDS */
 .card {
   margin: 10px;
-  padding: 10px;
-  border: 1px solid white;
+  /* padding: 10px; */
+  /* border: 1px solid white; */
   border-radius: 15px;
   background-color: var(--light);
   color: var(--dark);
@@ -273,6 +276,18 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+}
+
+
+.flex-parent{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  
 }
 
 .card-header {
@@ -1383,6 +1398,7 @@ nav a:hover {
     align-items: center;
   }
 }
+
 
 .flex-parent{
   display: flex;

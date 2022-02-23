@@ -10,6 +10,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS_FOR_LAUNCH } from '../utils/queries';
 import { Container } from "react-bootstrap";
 
+
 export default function LaunchDetail() {
   const { launchId } = useParams();
   const { loading, data } = useQuery(QUERY_THOUGHTS_FOR_LAUNCH, { variables: { launchId: launchId } });
@@ -75,9 +76,8 @@ export default function LaunchDetail() {
         video_link={launch.links.video_link}
         details={launch.details}
       />
-      </Container>
 
-      <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+      <div className={`composer-box col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
         <br></br>
         <ThoughtComposer postClickedCallback={handleAddThought} />
         {loading ? (
@@ -86,6 +86,9 @@ export default function LaunchDetail() {
           <ThoughtList thoughts={thoughts} title="Comments" setThoughts={setThoughts} />
         )}
       </div>
+      </Container>
+
+      
     </>
   );
 }
