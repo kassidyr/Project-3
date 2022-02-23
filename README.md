@@ -60,8 +60,11 @@ If you are interested in contributing please contact any of the individuals list
 ## Credits 
 
 Alex Snyder - (Alex Snyder)[https://github.com/AlySnyder]
+
 Kassidy - (Kassidy Ralph)[https://github.com/kassidyr]
+
 Matt - (Matt A)[https://github.com/MA15]
+
 Antonia Garcia - (Antonia Garcia)[https://github.com/Iviviana]
 
 
