@@ -276,18 +276,6 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-}
-
-
-.flex-parent{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* flex-wrap: wrap; */
-  align-items: center;
-  
 }
 
 .card-header {
