@@ -13,8 +13,8 @@ function BigLaunchCard({ id, mission_name, site_name_long, rocket_name, launch_d
         <Card.Text>{rocket_name}</Card.Text>
         {/* <Card.Text>{launch_date_utc}</Card.Text> */}
         <Card.Text>{details}</Card.Text>
-        <Card.Link>{article_link}</Card.Link>
-        <Card.Link>{video_link}</Card.Link>
+        <Card.Link href={article_link}>Read the article</Card.Link>
+        <Card.Link href={video_link}>Watch the video</Card.Link>
         {id === undefined ? <></> : <Card.Link href={`/launch/${id}`}>See More</Card.Link>}
         <Row>
           <Col>
