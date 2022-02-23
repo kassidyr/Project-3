@@ -18,22 +18,27 @@ Welcome to SpaceBook! A SpaceX forum dedicated to users who are interested in al
 
 ## Installation
 
-In the project directory, you can run:
+If you wish to work locally on this web application you can clone the repository from:
 
-### `npm run develop`
+`git clone https://github.com/kassidyr/Project-3`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the project directory, server, and client folders run `npm install` to install all dependencies. Once installed run `npm run develop` to start the server locally.
+
+This runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. Your localhost may vary from this one.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ## Usage
 
-link to SpaceBook repository
+Link to SpaceBook repository:
 
 (SpaceBook)[https://github.com/kassidyr/Project-3]
 
+Link to deployed application on heroku:
+
+(SpaceBook)[]
 
 ## Tests
 
@@ -51,7 +56,7 @@ If you are interested in contacting me for this project or future work , feel fr
 ## Credits 
 
 Alex Snyder - (Alex Snyder)[https://github.com/AlySnyder]
-Kassidy - (Kassidy R)[https://github.com/kassidyr]
+Kassidy - (Kassidy Ralph)[https://github.com/kassidyr]
 Matt - (Matt A)[https://github.com/MA15]
 Antonia Garcia - (Antonia Garcia)[https://github.com/Iviviana]
 
