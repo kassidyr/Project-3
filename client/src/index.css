@@ -1383,3 +1383,9 @@ nav a:hover {
     align-items: center;
   }
 }
+
+.flex-parent{
+  display: flex;
+ 
+  overflow: scroll;
+}

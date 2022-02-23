@@ -74,9 +74,9 @@ const Home = () => {
             article_link={launch.links.article_link}
             flickr_images={launch.links.flickr_images[0]}
           />
-        ))}
-      </Container>
-      <br></br>
+        ))} 
+        
+        <br></br>
      
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 comment-box-div ${loggedIn && "col-lg-8"}`}>
@@ -89,6 +89,8 @@ const Home = () => {
           )}
         </div>
       </div>
+      </Container>
+     
     </main>
   );
 };
