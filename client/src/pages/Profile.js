@@ -14,6 +14,15 @@ const Profile = () => {
 
   const [addFriend] = useMutation(ADD_FRIEND);
 
+  const [me, setMe] = React.useState()
+  const { loading: loadingMe, data: meData } = useQuery(QUERY_ME)
+
+  React.useMemo(() => {
+    if (meData && meData.me) {
+      setMe(meData.me)
+    }
+  }, [meData])
+
   // if there is a value in userParam from the URL bar, that value is used to run the QUERY_USER query
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -42,13 +51,24 @@ const Profile = () => {
 
   const handleClick = async () => {
     try {
-      await addFriend({
+      const { data } = await addFriend({
         variables: { id: user._id },
       });
+
+      setMe(data.addFriend)
     } catch (e) {
       console.error(e);
     }
   };
+
+  function isFriendsWith(user) {
+    let match = me.friends.filter((friend) => friend.username === user)
+    if (match.length > 0) {
+      return true
+    }
+
+    return false
+  }
 
   return (
     <div>
@@ -56,7 +76,7 @@ const Profile = () => {
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
           Viewing {userParam ? `${user.username}'s` : "your"} profile 🚀
         </h2>
-        {userParam && (
+        {userParam && me && !isFriendsWith(user.username) && (
           <button className="btn ml-auto" onClick={handleClick}>
             Add Friend
           </button>

@@ -22,7 +22,7 @@ const Home = () => {
   //if logged in the loggedIn variable will be true; otherwise it will be false
   const loggedIn = Auth.loggedIn();
   const [launches, setLaunches] = React.useState([]);
-  // const [date, setDate] = React.useState("");
+
   const [addThought, { error }] = useMutation(ADD_THOUGHT);
 
   React.useMemo(() => {
@@ -40,8 +40,7 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        // const options = { year: "numeric", month: "long", day: "numeric", weekday: "long" }
-        // setDate(new Date(data.data.launch_date_unix).toLocaleDateString(undefined, options));
+
         setLaunches(data.data.launches);
       });
   }, []);
@@ -58,7 +57,6 @@ const Home = () => {
     }
   }
   
-  // launch.launch_date_utc
 
   return (
     <main>
@@ -88,15 +86,6 @@ const Home = () => {
             <ThoughtList thoughts={thoughts} setThoughts={setThoughts} />
           )}
         </div>
-        {/* {loggedIn && userData ? (
-          <div className="col-12 col-lg-3 mb-3">
-            <FriendList
-              username={userData.me.username}
-              friendCount={userData.me.friendCount}
-              friends={userData.me.friends}
-            />
-          </div>
-        ) : null} */}
       </div>
     </main>
   );

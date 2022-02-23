@@ -25,7 +25,6 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // use try/catch instead of promises to handle errors
     try {
       const { data } = await addUser({
         variables: { ...formState }
